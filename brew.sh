@@ -18,7 +18,7 @@ apps=(
     keybase
     menubar-stats
     notion
-    osxfuse
+    macfuse
     pdf-expert
     postman
     quitter
