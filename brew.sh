@@ -55,4 +55,4 @@ brew install "${cli[@]}"
 ############################
 # Install cask packages
 ############################
-brew --cask install "${apps[@]}"
+brew install --cask "${apps[@]}"
