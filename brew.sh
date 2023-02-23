@@ -47,8 +47,12 @@ cli=(
     python
 )
 
+############################
 # Install cli apps
+############################
 brew install "${cli[@]}"
 
+############################
 # Install cask packages
+############################
 brew --cask install "${apps[@]}"
