@@ -1,32 +1,35 @@
 apps=(
     1password
+    airbuddy
     arc
     arq
     balenaetcher
     bartender
+    calibre
     cryptomator
-    displaperture
     dropbox
     discord
     firefox
     figma
+    goland
     google-chrome
     github
     gpg-suite-no-mail
     iterm2
     keka
+    kindle
     keybase
-    menubar-stats
-    notion
     macfuse
+    notion
+    obsidian
     pdf-expert
     postman
     quitter
     raycast
+    rectangle
     rocket
     slack
     signal
-    sketch
     slack
     spotify
     the-unarchiver
