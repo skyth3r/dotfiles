@@ -55,7 +55,7 @@ fi
 
 # Sign commits with SSH key
 read -p "Add SSH key to keychain and use it to sign commits? y or n: " confirm
-if [[ $confirm == "yes" ]] || [[ $confirm == "y" ]]; then
+if [[ $confirm == "yes" || $confirm == "y" ]]; then
     echo "Adding SSH key to SSH agent 🔑"
     ssh-add ~/.ssh/id_ed25519
     echo "SSH key added to SSH agent successfully 🔒"
@@ -117,3 +117,5 @@ if [[ $SHELL != "/bin/zsh" ]]; then
 elif [[ $SHELL == "/bin/zsh" ]]; then
     echo "Shell already set to zsh, skipping 🦘"
 fi
+
+echo "Setup complete! 🎉"
