@@ -1,0 +1,65 @@
+# Taps
+tap 'homebrew/bundle'
+
+# Binaries
+brew 'ffmpeg'
+brew 'gh'
+brew 'git'
+brew 'go'
+brew 'helm'
+brew 'hugo'
+brew 'imagemagick'
+brew 'kubernetes-cli'
+brew 'kubectx'
+brew 'mackup'
+brew 'mas'
+brew 'nvm'
+brew 'python'
+brew 'sqlite3'
+brew 'sqlite-utils'
+brew 'tilt'
+brew 'yt-dlp'
+brew 'zsh-autosuggestions'
+brew 'zsh-syntax-highlighting'
+
+# Apps
+cask '1password'
+cask 'arc'
+cask 'arq'
+cask 'balenaetcher'
+cask 'bruno'
+cask 'calibre'
+cask 'cryptomator'
+cask 'docker'
+cask 'dropbox'
+cask 'figma'
+cask 'firefox'
+cask 'github'
+cask 'gpg-suite-no-mail'
+cask 'goland'
+cask 'google-chrome'
+cask 'imageoptim'
+cask 'iterm2'
+cask 'keka'
+cask 'kindle'
+cask 'keybase'
+cask 'macfuse'
+cask 'obsidian'
+cask 'pdf-expert'
+cask 'quitter'
+cask 'rectangle'
+cask 'rocket'
+cask 'signal'
+cask 'slack'
+cask 'spotify'
+cask 'varacrypt'
+cask 'vlc'
+cask 'visual-studio-code'
+cask 'whatsapp'
+
+# Mac App Store
+mas 'Amphetamine', id: 937984704
+mas 'Calcbot', id: 931657367
+mas 'Paprika Recipe Manager 3', id: 1303222628
+mas 'Bear', id: 1091189122
+mas 'Skitch', id: 425955336
