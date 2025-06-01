@@ -1,7 +1,10 @@
 # Taps
 tap 'homebrew/bundle'
+tap "jandedobbeleer/oh-my-posh"
+tap "snyk/tap"
 
 # Binaries
+brew 'bluetoothconnector'
 brew 'ffmpeg'
 brew 'gh'
 brew 'git'
@@ -9,17 +12,25 @@ brew 'go'
 brew 'helm'
 brew 'hugo'
 brew 'imagemagick'
+brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 brew 'kubernetes-cli'
 brew 'kubectx'
 brew 'mackup'
+brew 'mailsy'
 brew 'mas'
 brew 'nvm'
+brew 'protobuf'
 brew 'python'
+brew 'snyk'
+brew 'speedtest-cli'
 brew 'sqlite3'
 brew 'sqlite-utils'
+brew 'switchaudio-osx'
 brew 'tilt'
+brew 'woff2'
 brew 'yt-dlp'
 brew 'zsh-autosuggestions'
+brew 'zsh-history-substring-search'
 brew 'zsh-syntax-highlighting'
 
 # Apps
@@ -43,6 +54,7 @@ cask 'iterm2'
 cask 'keka'
 cask 'kindle'
 cask 'keybase'
+cask 'legcord'
 cask 'macfuse'
 cask 'obsidian'
 cask 'pdf-expert'
