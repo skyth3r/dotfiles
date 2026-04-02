@@ -66,7 +66,7 @@ if [[ $confirm == "yes" || $confirm == "y" ]]; then
     # Enable commit signing using the generated SSH key
     if [[ -z $(git config --global user.signingkey || true) ]]; then
         echo "Enabling commit signing 🔏"
-        git config --global user.signingkey $(ssh-keygen -lf ~/.ssh/id_ed25519.pub | awk '{print $2}')
+        git config --global user.signingkey ~/.ssh/id_ed25519.pub
         echo "Commit signing enabled successfully ✅"
     else
         echo "Commit signing already enabled, skipping 🦘"
@@ -81,6 +81,15 @@ if [[ $confirm == "yes" || $confirm == "y" ]]; then
     else
         echo "Commit signing globally already enabled, skipping 🦘"
     fi
+fi
+
+# Enable autoSetupRemote
+if [[ -z $(git config --global push.autoSetupRemote || true) ]]; then
+    echo "Enabling push.autoSetupRemote 🔗"
+    git config --global push.autoSetupRemote true
+    echo "push.autoSetupRemote enabled successfully ✅"
+else
+    echo "push.autoSetupRemote already set, skipping 🦘"
 fi
 
 ############################
