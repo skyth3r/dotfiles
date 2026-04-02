@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 ############################
 # Xcode CLI install
@@ -15,7 +16,7 @@ if [[ ! -e "/Library/Developer/CommandLineTools/" ]]; then
         sleep 5
     done
     echo "Xcode CLI tools installed successfully ✅"
-elif [[ -e "/Library/Developer/CommandLineTools/" ]]; then
+else
     echo "Xcode CLI tools already installed, skipping 🦘"
 fi
 
@@ -24,7 +25,7 @@ fi
 ############################
 
 echo "Setting up git 🛠️"
-if [[ -z $(git config --global user.name) ]]; then
+if [[ -z $(git config --global user.name || true) ]]; then
     read -p "Enter name: " name
     git config --global user.name "$name"
     echo "Name set successfully ✅"
@@ -32,13 +33,15 @@ else
     echo "git global name already set, skipping 🦘"
 fi
 
-if [[ -z $(git config --global user.email) ]]; then
+if [[ -z $(git config --global user.email || true) ]]; then
     read -p "Enter email address: " email
     git config --global user.email "$email"
     echo "Email set successfully ✅"
 else
     echo "git global email already set, skipping 🦘"
 fi
+
+email=$(git config --global user.email)
 
 # Generate new SSH key
 if [[ ! -f ~/.ssh/id_ed25519 ]]; then
@@ -61,7 +64,7 @@ if [[ $confirm == "yes" || $confirm == "y" ]]; then
     echo "SSH key added to SSH agent successfully 🔒"
 
     # Enable commit signing using the generated SSH key
-    if [[ -z $(git config --global user.signingkey) ]]; then
+    if [[ -z $(git config --global user.signingkey || true) ]]; then
         echo "Enabling commit signing 🔏"
         git config --global user.signingkey $(ssh-keygen -lf ~/.ssh/id_ed25519.pub | awk '{print $2}')
         echo "Commit signing enabled successfully ✅"
@@ -70,8 +73,9 @@ if [[ $confirm == "yes" || $confirm == "y" ]]; then
     fi
 
     # Enable commit signing globally
-    if [[ -z $(git config --global commit.gpgSign) ]]; then
+    if [[ -z $(git config --global commit.gpgSign || true) ]]; then
         echo "Enabling commit signing globally 🌎"
+        git config --global gpg.format ssh
         git config --global commit.gpgSign true
         echo "Global commit signing enabled successfully ✅"
     else
@@ -84,7 +88,7 @@ fi
 ############################
 
 # Check if Homebrew is installed and install it if not
-if [[ ! command -v brew &> /dev/null ]]; then
+if ! command -v brew &> /dev/null; then
     echo "Installing Homebrew 🍺"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # > /dev/null 2>&1
     # Add Homebrew to PATH
@@ -114,7 +118,7 @@ if [[ $SHELL != "/bin/zsh" ]]; then
     echo "Switching shell to zsh 🐚"
     chsh -s /bin/zsh
     echo "Shell switched to zsh successfully ✅"
-elif [[ $SHELL == "/bin/zsh" ]]; then
+else
     echo "Shell already set to zsh, skipping 🦘"
 fi
 
