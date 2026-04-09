@@ -102,11 +102,11 @@ if ! command -v brew &> /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # > /dev/null 2>&1
     # Add Homebrew to PATH
     echo "Adding Homebrew to PATH"
-    echo >> ~/.zprofile
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
+    brew update
     echo "Homebrew installed successfully ✅"
-elif [[ -x $(command -v brew) ]]; then
+else
     echo "Homebrew already installed, skipping 🦘"
 fi
 
