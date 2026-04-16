@@ -104,6 +104,7 @@ if ! command -v brew &> /dev/null; then
     echo "Adding Homebrew to PATH"
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
     eval "$(/opt/homebrew/bin/brew shellenv)"
+    source .zprofile
     brew update
     echo "Homebrew installed successfully ✅"
 else
@@ -132,3 +133,5 @@ else
 fi
 
 echo "Setup complete! 🎉"
+echo ""
+echo "Run 'source ~/.zprofile' or open a new terminal for brew to be available."
