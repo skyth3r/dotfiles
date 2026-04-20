@@ -96,6 +96,10 @@ alias dcd="docker compose down"
 # Kubernetes
 alias k='kubectl'
 alias kgp='kubectl get pods'
+alias kgd='kubectl get deployments'
+alias kg='kubectl get'
+alias kd='kubectl describe'
+alias kl='kubectl logs'
 alias kc='kubectx'
 alias kn='kubens'
 
