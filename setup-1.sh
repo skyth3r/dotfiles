@@ -110,6 +110,25 @@ else
 fi
 
 ############################
+# Brewfile
+############################
+
+# Check if signed into Apple account
+check_apple_id() {
+    /usr/libexec/PlistBuddy -c "Print :Accounts:0:AccountID" \
+        ~/Library/Preferences/MobileMeAccounts.plist 2>/dev/null | grep -q "@"
+}
+
+echo "Installing Homebrew Formulae & Apps 🍻"
+brew bundle --file=Brewfile
+
+if command -v mas &> /dev/null && check_apple_id; then
+    echo "Installing Mac App Store Apps 🍎"
+    brew bundle --file=Brewfile-mas
+fi
+
+
+############################
 # zsh setup
 ############################
 
