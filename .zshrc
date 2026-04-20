@@ -11,7 +11,9 @@ eval "$(atuin init zsh)"
 ############################
 # Oh My Posh
 ############################
-eval "$(oh-my-posh init zsh --config 'spaceship')"
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config 'spaceship')"
+fi
 
 ############################
 # fnm (Fast Node Manager)
