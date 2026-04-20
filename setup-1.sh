@@ -131,7 +131,11 @@ fi
 echo "Installing Homebrew Formulae & Apps 🍻"
 brew bundle --file="$brewfile"
 
-if command -v mas &> /dev/null && check_apple_id; then
+if ! command -v mas &> /dev/null; then
+    echo "mas not installed, skipping Mac App Store Apps 🦘"
+elif ! check_apple_id; then
+    echo "Not logged into Apple account, skipping Mac App Store Apps 🦘"
+else
     if [[ -f Brewfile-mas ]]; then
         brewfile_mas="Brewfile-mas"
     elif [[ -f Brewfile-mas.txt ]]; then
@@ -143,7 +147,6 @@ if command -v mas &> /dev/null && check_apple_id; then
     echo "Installing Mac App Store Apps 🍎"
     brew bundle --file="$brewfile_mas"
 fi
-
 
 ############################
 # zsh setup
