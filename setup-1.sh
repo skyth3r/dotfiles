@@ -119,12 +119,29 @@ check_apple_id() {
         ~/Library/Preferences/MobileMeAccounts.plist 2>/dev/null | grep -q "@"
 }
 
+if [[ -f Brewfile ]]; then
+    brewfile="Brewfile"
+elif [[ -f Brewfile.txt ]]; then
+    brewfile="Brewfile.txt"
+else
+    echo "Error: Neither Brewfile nor Brewfile.txt found ❌"
+    exit 1
+fi
+
 echo "Installing Homebrew Formulae & Apps 🍻"
-brew bundle --file=Brewfile
+brew bundle --file="$brewfile"
 
 if command -v mas &> /dev/null && check_apple_id; then
+    if [[ -f Brewfile-mas ]]; then
+        brewfile_mas="Brewfile-mas"
+    elif [[ -f Brewfile-mas.txt ]]; then
+        brewfile_mas="Brewfile-mas.txt"
+    else
+        echo "Error: Neither Brewfile-mas nor Brewfile-mas.txt found ❌"
+        exit 1
+    fi
     echo "Installing Mac App Store Apps 🍎"
-    brew bundle --file=Brewfile-mas
+    brew bundle --file="$brewfile_mas"
 fi
 
 
