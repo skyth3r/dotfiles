@@ -78,10 +78,3 @@ cask 'zen'
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"
-
-# Mac App Store
-mas 'Amphetamine', id: 937984704
-mas 'Calcbot', id: 931657367
-mas 'Paprika Recipe Manager 3', id: 1303222628
-mas 'Bear', id: 1091189122
-mas 'Skitch', id: 425955336

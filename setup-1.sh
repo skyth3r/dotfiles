@@ -110,6 +110,45 @@ else
 fi
 
 ############################
+# Brewfile
+############################
+
+# Check if signed into Apple account
+check_apple_id() {
+    /usr/libexec/PlistBuddy -c "Print :Accounts:0:AccountID" \
+        ~/Library/Preferences/MobileMeAccounts.plist 2>/dev/null | grep -q "@"
+}
+
+if [[ -f Brewfile ]]; then
+    brewfile="Brewfile"
+elif [[ -f Brewfile.txt ]]; then
+    brewfile="Brewfile.txt"
+else
+    echo "Error: Neither Brewfile nor Brewfile.txt found ❌"
+    exit 1
+fi
+
+echo "Installing Homebrew Formulae & Apps 🍻"
+brew bundle --file="$brewfile" --verbose
+
+if ! command -v mas &> /dev/null; then
+    echo "mas not installed, skipping Mac App Store Apps 🦘"
+elif ! check_apple_id; then
+    echo "Not logged into Apple account, skipping Mac App Store Apps 🦘"
+else
+    if [[ -f Brewfile-mas ]]; then
+        brewfile_mas="Brewfile-mas"
+    elif [[ -f Brewfile-mas.txt ]]; then
+        brewfile_mas="Brewfile-mas.txt"
+    else
+        echo "Error: Neither Brewfile-mas nor Brewfile-mas.txt found ❌"
+        exit 1
+    fi
+    echo "Installing Mac App Store Apps 🍎"
+    brew bundle --file="$brewfile_mas" --verbose
+fi
+
+############################
 # zsh setup
 ############################
 
