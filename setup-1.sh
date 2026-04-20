@@ -57,29 +57,34 @@ else
 fi
 
 # Sign commits with SSH key
-read -p "Add SSH key to keychain and use it to sign commits? y or n: " confirm
-if [[ $confirm == "yes" || $confirm == "y" ]]; then
-    echo "Adding SSH key to SSH agent 🔑"
-    ssh-add ~/.ssh/id_ed25519
-    echo "SSH key added to SSH agent successfully 🔒"
+key_fp=$(ssh-keygen -lf ~/.ssh/id_ed25519.pub 2>/dev/null | awk '{print $2}')
+if [[ -n "$key_fp" ]] && ssh-add -l 2>/dev/null | grep -qF "$key_fp"; then
+    echo "SSH key already in SSH agent, skipping 🦘"
+else
+    read -p "Add SSH key to keychain and use it to sign commits? y or n: " confirm
+    if [[ $confirm == "yes" || $confirm == "y" ]]; then
+        echo "Adding SSH key to SSH agent 🔑"
+        ssh-add ~/.ssh/id_ed25519
+        echo "SSH key added to SSH agent successfully 🔒"
 
-    # Enable commit signing using the generated SSH key
-    if [[ -z $(git config --global user.signingkey || true) ]]; then
-        echo "Enabling commit signing 🔏"
-        git config --global user.signingkey ~/.ssh/id_ed25519.pub
-        echo "Commit signing enabled successfully ✅"
-    else
-        echo "Commit signing already enabled, skipping 🦘"
-    fi
+        # Enable commit signing using the generated SSH key
+        if [[ -z $(git config --global user.signingkey || true) ]]; then
+            echo "Enabling commit signing 🔏"
+            git config --global user.signingkey ~/.ssh/id_ed25519.pub
+            echo "Commit signing enabled successfully ✅"
+        else
+            echo "Commit signing already enabled, skipping 🦘"
+        fi
 
-    # Enable commit signing globally
-    if [[ -z $(git config --global commit.gpgSign || true) ]]; then
-        echo "Enabling commit signing globally 🌎"
-        git config --global gpg.format ssh
-        git config --global commit.gpgSign true
-        echo "Global commit signing enabled successfully ✅"
-    else
-        echo "Commit signing globally already enabled, skipping 🦘"
+        # Enable commit signing globally
+        if [[ -z $(git config --global commit.gpgSign || true) ]]; then
+            echo "Enabling commit signing globally 🌎"
+            git config --global gpg.format ssh
+            git config --global commit.gpgSign true
+            echo "Global commit signing enabled successfully ✅"
+        else
+            echo "Commit signing globally already enabled, skipping 🦘"
+        fi
     fi
 fi
 
