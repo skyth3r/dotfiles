@@ -129,7 +129,7 @@ else
 fi
 
 echo "Installing Homebrew Formulae & Apps 🍻"
-brew bundle --file="$brewfile"
+brew bundle --file="$brewfile" --verbose
 
 if ! command -v mas &> /dev/null; then
     echo "mas not installed, skipping Mac App Store Apps 🦘"
@@ -145,7 +145,7 @@ else
         exit 1
     fi
     echo "Installing Mac App Store Apps 🍎"
-    brew bundle --file="$brewfile_mas"
+    brew bundle --file="$brewfile_mas" --verbose
 fi
 
 ############################
