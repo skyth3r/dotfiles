@@ -157,10 +157,11 @@ fi
 # zsh setup
 ############################
 
-# Create blank zshrc file
+# Setup .zshrc file
 if [[ ! -f ~/.zshrc ]]; then
-    touch ~/.zshrc
-    echo ".zshrc file created successfully ✅"
+    echo "Downloading .zshrc 📥"
+    curl -fsSL https://raw.githubusercontent.com/skyth3r/dotfiles/refs/heads/main/.zshrc -o ~/.zshrc
+    echo ".zshrc downloaded successfully ✅"
 else
     echo ".zshrc file already exists, skipping 🦘"
 fi
