@@ -165,6 +165,7 @@ if [[ ! -f ~/.zshrc ]]; then
 else
     echo ".zshrc file already exists, skipping 🦘"
 fi
+source ~/.zshrc
 
 # Switch shell to zsh
 if [[ $SHELL != "/bin/zsh" ]]; then
@@ -175,6 +176,21 @@ else
     echo "Shell already set to zsh, skipping 🦘"
 fi
 
+############################
+# fnm setup
+############################
+
+fnm install --lts
+fnm use lts-latest
+
+############################
+# npm apps
+############################
+
+npm install -g agentmail-cli
+npm install -g @readwise/cli
+npm install -g cash-cli
+
 echo "Setup complete! 🎉"
 echo ""
-echo "Run 'source ~/.zprofile' or open a new terminal for brew to be available."
+echo "Run 'source ~/.zprofile && source ~/.zshrc' or open a new terminal for brew to be available."
