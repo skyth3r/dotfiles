@@ -165,7 +165,7 @@ if [[ ! -f ~/.zshrc ]]; then
 else
     echo ".zshrc file already exists, skipping 🦘"
 fi
-source ~/.zshrc
+zsh -c "source ~/.zshrc"
 
 # Switch shell to zsh
 if [[ $SHELL != "/bin/zsh" ]]; then
