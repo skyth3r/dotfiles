@@ -113,6 +113,7 @@ if ! command -v brew &> /dev/null; then
 else
     echo "Homebrew already installed, skipping 🦘"
 fi
+source ~/.zprofile
 
 ############################
 # Brewfile
