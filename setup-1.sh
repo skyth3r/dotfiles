@@ -97,6 +97,42 @@ else
     echo "push.autoSetupRemote already set, skipping 🦘"
 fi
 
+# Rebase on pull instead of merge
+if [[ -z $(git config --global pull.rebase || true) ]]; then
+    echo "Setting rebase on pull instead of merge 🔃"
+    git config --global pull.rebase true
+    echo "Rebase on pull set successfully ✅"
+else
+    echo "Rebase on pull already set, skipping 🦘"
+fi
+
+# Auto prune on fetch 
+if [[ -z $(git config --global fetch.prune || true) ]]; then
+    echo "Setting auto prune on fetch ✂️"
+    git config --global fetch.prune true
+    echo "Auto prune on fetch set successfully ✅"
+else
+    echo "Auto prune on fetch already set, skipping 🦘"
+fi
+
+# Use Histogram instead of Myers (default) for diff
+if [[ -z $(git config --global diff.algorithm || true) ]]; then
+    echo "Setting diff algorithm to histogram 📊"
+    git config --global diff.algorithm histogram
+    echo "Histogram for diffs set successfully ✅"
+else
+    echo "Histogram for diffs already set, skipping 🦘"
+fi
+
+# Use rerere for merge conflicts
+if [[ -z $(git config --global rerere.enabled || true) ]]; then
+    echo "Setting rerere for managing merge conflicts ♻️"
+    git config --global rerere.enabled true
+    echo "rerere for managing merge conflicts set successfully ✅"
+else
+    echo "rerere for managing merge conflicts already set, skipping 🦘"
+fi
+
 ############################
 # Homebrew install
 ############################
