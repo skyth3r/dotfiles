@@ -149,6 +149,7 @@ if ! command -v brew &> /dev/null; then
 else
     echo "Homebrew already installed, skipping 🦘"
 fi
+source ~/.zprofile
 
 ############################
 # Brewfile
@@ -216,6 +217,7 @@ fi
 # fnm setup
 ############################
 
+eval "$(fnm env --use-on-cd --shell bash)"
 fnm install --lts
 fnm use lts-latest
 
