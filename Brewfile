@@ -30,7 +30,6 @@ brew 'tilt'
 brew 'woff2'
 brew 'yt-dlp'
 brew 'zsh-autosuggestions'
-brew 'zsh-history-substring-search'
 brew 'zsh-syntax-highlighting'
 
 # Apps
