@@ -181,6 +181,7 @@ fi
 # fnm setup
 ############################
 
+eval "$(fnm env --use-on-cd --shell bash)"
 fnm install --lts
 fnm use lts-latest
 
