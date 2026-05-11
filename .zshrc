@@ -29,6 +29,11 @@ case ":$PATH:" in
 esac
 
 ############################
+# go
+############################
+export PATH=$PATH:$(go env GOPATH)/bin
+
+############################
 # Zsh Addons
 ############################
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
