@@ -217,9 +217,12 @@ fi
 # fnm setup
 ############################
 
+echo "Setting up fnm (Fast Node Manager) 🛠️"
 eval "$(fnm env --use-on-cd --shell bash)"
+echo "Installing latest LTS version of Node.js 📦"
 fnm install --lts
-fnm use lts-latest
+echo "Setting latest LTS version of Node.js as default ✅"
+fnm default lts-latest
 
 ############################
 # npm apps
