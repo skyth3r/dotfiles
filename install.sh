@@ -232,6 +232,20 @@ npm install -g agentmail-cli
 npm install -g @readwise/cli
 npm install -g cash-cli
 
+############################
+# Directory setup
+############################
+
+mkdir -p src/github.com/skyth3r
+cd "$HOME/src/github.com/skyth3r"
+echo "Changed directory to ~/src/github.com/skyth3r ♻️"
+
+echo "Cloning public repositories 📥"
+gh repo clone skyth3r/dotfiles
+gh repo clone skyth3r/skyth3r.github.io
+gh repo clone skyth3r/skyther
+gh repo clone skyth3r/automate-now
+
 echo "Setup complete! 🎉"
 echo ""
 echo "Run 'source ~/.zprofile && source ~/.zshrc' or open a new terminal for brew to be available."
