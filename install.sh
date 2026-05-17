@@ -241,10 +241,10 @@ cd "$HOME/src/github.com/skyth3r"
 echo "Changed directory to ~/src/github.com/skyth3r ♻️"
 
 echo "Cloning public repositories 📥"
-gh repo clone skyth3r/dotfiles
-gh repo clone skyth3r/skyth3r.github.io
-gh repo clone skyth3r/skyther
-gh repo clone skyth3r/automate-now
+git clone https://github.com/skyth3r/dotfiles.git
+git clone https://github.com/skyth3r/skyth3r.github.io.git
+git clone https://github.com/skyth3r/skyth3r.git
+git clone https://github.com/skyth3r/automate-now.git
 
 echo "Setup complete! 🎉"
 echo ""
