@@ -1,0 +1,54 @@
+#
+#       ██████╗ ██╗  ██╗ ██████╗ ███████╗████████╗████████╗██╗   ██╗
+#      ██╔════╝ ██║  ██║██╔═══██╗██╔════╝╚══██╔══╝╚══██╔══╝╚██╗ ██╔╝
+#      ██║  ███╗███████║██║   ██║███████╗   ██║      ██║    ╚████╔╝
+#      ██║   ██║██╔══██║██║   ██║╚════██║   ██║      ██║     ╚██╔╝
+#      ╚██████╔╝██║  ██║╚██████╔╝███████║   ██║      ██║      ██║
+#       ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝      ╚═╝      ╚═╝
+#
+
+# --- Appearance ---
+theme = Dracula
+adjust-cell-height=1
+background-opacity = 0.76
+background-blur = 10
+unfocused-split-opacity = 0.6
+window-padding-x = 8
+window-padding-y = 4
+window-padding-balance = true
+
+# --- macOS ---
+macos-titlebar-style = tabs
+macos-icon = holographic
+window-save-state = never
+
+# --- Shell ---
+shell-integration = zsh
+
+# --- Quick Terminal ---
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+quick-terminal-position = bottom
+
+# --- Contrast ---
+minimum-contrast = 1.3
+
+# --- Font ---
+font-family = JetBrainsMono Nerd Font
+font-size = 16
+font-thicken = true
+
+# --- Cursor ---
+cursor-style = bar
+
+# --- Keybindings for cursor movement ---
+# Alt-key bindings (beginning/end of line)
+keybind = alt+h=text:\x01
+keybind = alt+l=text:\x05
+
+# Cmd-key bindings (beginning/end of line)
+#keybind = cmd+left=text:\x01
+#keybind = cmd+right=text:\x05
+
+# Alt-arrow bindings (word movements)
+#keybind = alt+left=esc:b
+#keybind = alt+right=esc:f
