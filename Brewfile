@@ -10,7 +10,6 @@ brew 'gh'
 brew 'git'
 brew 'go'
 brew 'helm'
-brew 'hugo'
 brew 'imagemagick'
 brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 brew 'kubernetes-cli'
@@ -79,3 +78,6 @@ cask 'zen'
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font"
+
+# Go packages
+go "github.com/jmooring/hvm"
