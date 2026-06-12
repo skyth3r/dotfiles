@@ -1,6 +1,6 @@
 # Taps
-tap "jandedobbeleer/oh-my-posh"
-tap "snyk/tap"
+tap "jandedobbeleer/oh-my-posh", trusted: true
+tap "snyk/tap", trusted: true
 
 # Binaries
 brew 'atuin'
