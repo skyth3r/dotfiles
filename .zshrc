@@ -138,7 +138,7 @@ alias activate="source ./venv/bin/activate"
 
 # Claude Code
 alias cld="claude"
-alias upcld="brew upgrade claude-code"
+alias upcld="claude update"
 
 # Shortcuts
 alias copyssh="pbcopy < $HOME/.ssh/id_ed25519.pub"
