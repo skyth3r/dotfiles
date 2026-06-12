@@ -34,6 +34,11 @@ esac
 export PATH=$PATH:$(go env GOPATH)/bin
 
 ############################
+# Local bin
+############################
+export PATH="$HOME/.local/bin:$PATH"
+
+############################
 # hvm (Hugo Version Manager)
 ############################
 hugo() {
