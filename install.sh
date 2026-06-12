@@ -191,6 +191,28 @@ else
 fi
 
 ############################
+# AI tools
+############################
+
+echo "Installing AI tools 🤖"
+
+# Claude Code
+if ! command -v claude &> /dev/null; then
+    echo "Installing Claude Code 🦞"
+    curl -fsSL https://claude.ai/install.sh | bash
+else
+    echo "Claude Code already installed, skipping 🦘"
+fi
+
+# Codex
+if ! command -v codex &> /dev/null; then
+    echo "Installing Codex 🌀"
+    curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh
+else
+    echo "Codex already installed, skipping 🦘"
+fi
+
+############################
 # zsh setup
 ############################
 

@@ -34,6 +34,11 @@ esac
 export PATH=$PATH:$(go env GOPATH)/bin
 
 ############################
+# Local bin
+############################
+export PATH="$HOME/.local/bin:$PATH"
+
+############################
 # hvm (Hugo Version Manager)
 ############################
 hugo() {
@@ -138,7 +143,7 @@ alias activate="source ./venv/bin/activate"
 
 # Claude Code
 alias cld="claude"
-alias upcld="brew upgrade claude-code"
+alias upcld="claude update"
 
 # Shortcuts
 alias copyssh="pbcopy < $HOME/.ssh/id_ed25519.pub"
