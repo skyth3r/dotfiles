@@ -133,6 +133,39 @@ else
     echo "rerere for managing merge conflicts already set, skipping 🦘"
 fi
 
+# Global gitignore
+echo "Setting up global gitignore 🛑"
+gitignore_dir="$HOME/.config/git"
+gitignore_file="$gitignore_dir/ignore"
+mkdir -p "$gitignore_dir"
+
+# Point git at the global ignore file (also the XDG default, set explicitly to be safe)
+if [[ -z $(git config --global core.excludesfile || true) ]]; then
+    echo "Setting core.excludesfile 🛑"
+    git config --global core.excludesfile "$gitignore_file"
+    echo "core.excludesfile set successfully ✅"
+else
+    echo "core.excludesfile already set, skipping 🦘"
+fi
+
+touch "$gitignore_file"
+
+# Append an entry to the global gitignore only if it is not already present
+add_gitignore_entry() {
+    local entry="$1"
+    if grep -qxF "$entry" "$gitignore_file"; then
+        echo "'$entry' already in global gitignore, skipping 🦘"
+    else
+        echo "$entry" >> "$gitignore_file"
+        echo "Added '$entry' to global gitignore ✅"
+    fi
+}
+
+add_gitignore_entry "**/.claude/settings.local.json"
+add_gitignore_entry "**/.vscode/settings.json"
+add_gitignore_entry ".DS_Store"
+echo "Global gitignore configured ✅"
+
 ############################
 # Homebrew install
 ############################
