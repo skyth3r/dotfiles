@@ -29,6 +29,12 @@ case ":$PATH:" in
 esac
 
 ############################
+# Stripe
+############################
+fpath=(~/.stripe $fpath)
+autoload -Uz compinit && compinit -i
+
+############################
 # go
 ############################
 export PATH=$PATH:$(go env GOPATH)/bin
