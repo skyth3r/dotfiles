@@ -275,6 +275,7 @@ echo "Installing AI tools 🤖"
 if ! command -v claude &> /dev/null; then
     echo "Installing Claude Code 🦞"
     curl -fsSL https://claude.ai/install.sh | bash
+    export PATH="$HOME/.local/bin:$PATH"
 else
     echo "Claude Code already installed, skipping 🦘"
 fi
