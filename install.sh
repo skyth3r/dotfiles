@@ -353,6 +353,15 @@ done
 echo "Agent plugins installed ✅"
 
 ############################
+# Stripe setup
+############################
+echo "Setting up Stripe autocompletion 💳"
+stripe completion --shell zsh
+mkdir -p ~/.stripe
+mv stripe-completion.zsh ~/.stripe
+echo "Stripe autocompletion setup ✅"
+
+############################
 # Directory setup
 ############################
 
