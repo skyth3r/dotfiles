@@ -224,28 +224,6 @@ else
 fi
 
 ############################
-# AI tools
-############################
-
-echo "Installing AI tools 🤖"
-
-# Claude Code
-if ! command -v claude &> /dev/null; then
-    echo "Installing Claude Code 🦞"
-    curl -fsSL https://claude.ai/install.sh | bash
-else
-    echo "Claude Code already installed, skipping 🦘"
-fi
-
-# Codex
-if ! command -v codex &> /dev/null; then
-    echo "Installing Codex 🌀"
-    curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh
-else
-    echo "Codex already installed, skipping 🦘"
-fi
-
-############################
 # zsh setup
 ############################
 
@@ -286,6 +264,93 @@ fnm default lts-latest
 npm install -g agentmail-cli
 npm install -g @readwise/cli
 npm install -g cash-cli
+
+############################
+# AI tools
+############################
+
+echo "Installing AI tools 🤖"
+
+# Claude Code
+if ! command -v claude &> /dev/null; then
+    echo "Installing Claude Code 🦞"
+    curl -fsSL https://claude.ai/install.sh | bash
+    export PATH="$HOME/.local/bin:$PATH"
+else
+    echo "Claude Code already installed, skipping 🦘"
+fi
+
+# Codex
+if ! command -v codex &> /dev/null; then
+    echo "Installing Codex 🌀"
+    curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh
+else
+    echo "Codex already installed, skipping 🦘"
+fi
+
+echo "Installing skills manager..."
+npm install -g skills
+echo "Skills manager installed ✅"
+
+# Agent Skills
+echo "Installing agent skills 🧠"
+skills add https://github.com/anthropics/skills --skill skill-creator webapp-testing -g --agent claude-code codex -y
+skills add https://github.com/vercel-labs/agent-skills --skill vercel-react-best-practices -g --agent claude-code codex -y
+skills add https://github.com/mattpocock/skills --skill grill-me grill-with-docs handoff -g --agent claude-code codex -y
+skills add https://github.com/shadcn/ui --skill shadcn -g --agent claude-code codex -y
+skills add agentmail-to/agentmail-claude-skill -g --agent claude-code codex -y
+echo "Agent skills installed ✅"
+
+############################
+# Agent plugins
+############################
+
+# To add a plugin: append the GitHub repo to PLUGIN_REPOS and the
+# corresponding plugin@marketplace spec to PLUGIN_INSTALLS at the same index.
+PLUGIN_REPOS=(
+    "DietrichGebert/ponytail"
+)
+PLUGIN_INSTALLS=(
+    "ponytail@ponytail"
+)
+
+echo "Installing agent plugins 🔌"
+
+for i in "${!PLUGIN_REPOS[@]}"; do
+    repo="${PLUGIN_REPOS[$i]}"
+    install_spec="${PLUGIN_INSTALLS[$i]}"
+    marketplace="${install_spec##*@}"
+    plugin_name="${install_spec%%@*}"
+
+    # Claude Code
+    if claude plugin marketplace list 2>/dev/null | grep -q "$marketplace"; then
+        echo "'$marketplace' marketplace already added to Claude Code, skipping 🦘"
+    else
+        echo "Adding '$marketplace' marketplace to Claude Code 🦞"
+        claude plugin marketplace add "$repo"
+    fi
+    if claude plugin list 2>/dev/null | grep -q "$install_spec"; then
+        echo "'$plugin_name' already installed in Claude Code, skipping 🦘"
+    else
+        echo "Installing '$install_spec' for Claude Code 🦞"
+        claude plugin install "$install_spec"
+    fi
+
+    # Codex
+    if codex plugin marketplace list 2>/dev/null | grep -q "$marketplace"; then
+        echo "'$marketplace' marketplace already added to Codex, skipping 🦘"
+    else
+        echo "Adding '$marketplace' marketplace to Codex 🌀"
+        codex plugin marketplace add "$repo"
+    fi
+    if codex plugin list 2>/dev/null | grep -q "$install_spec"; then
+        echo "'$plugin_name' already installed in Codex, skipping 🦘"
+    else
+        echo "Installing '$install_spec' for Codex 🌀"
+        codex plugin add "$install_spec"
+    fi
+done
+echo "Agent plugins installed ✅"
 
 ############################
 # Directory setup
