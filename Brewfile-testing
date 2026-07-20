@@ -1,0 +1,30 @@
+# Taps
+tap "snyk/tap", trusted: true
+
+
+# Binaries
+brew 'atuin'
+brew 'fnm'
+brew 'gh'
+brew 'git'
+brew 'go'
+brew 'mas'
+brew 'pnpm'
+brew 'pyenv'
+brew 'shellcheck'
+brew 'snyk/tap/snyk'
+brew 'yt-dlp'
+brew 'zsh-autosuggestions'
+brew 'zsh-syntax-highlighting'
+
+# Apps
+cask '1password'
+cask 'claude'
+cask 'ghostty'
+cask 'visual-studio-code'
+
+# Fonts
+cask "font-jetbrains-mono-nerd-font"
+
+# Go packages
+go "github.com/jmooring/hvm"
