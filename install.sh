@@ -353,6 +353,14 @@ done
 echo "Agent plugins installed ✅"
 
 ############################
+# Railway CLI
+############################
+# Runs railway setup agent to configure detected agent tools
+echo "Installing Railway CLI 🚂"
+sh -c "$(curl -fsSL https://railway.com/install.sh)" sh --agents -y
+echo "Railway CLI installed ✅"
+
+############################
 # Stripe setup
 ############################
 echo "Setting up Stripe autocompletion 💳"
