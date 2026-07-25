@@ -309,9 +309,11 @@ echo "Agent skills installed ✅"
 # corresponding plugin@marketplace spec to PLUGIN_INSTALLS at the same index.
 PLUGIN_REPOS=(
     "DietrichGebert/ponytail"
+    "stbenjam/skillsaw"
 )
 PLUGIN_INSTALLS=(
     "ponytail@ponytail"
+    "skillsaw@skillsaw-marketplace"
 )
 
 echo "Installing agent plugins 🔌"
