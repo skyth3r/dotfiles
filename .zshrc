@@ -8,6 +8,11 @@
 eval "$(atuin init zsh)"
 
 ############################
+# Zoxide
+############################
+eval "$(zoxide init --cmd cd zsh)"
+
+############################
 # Oh My Posh
 ############################
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
