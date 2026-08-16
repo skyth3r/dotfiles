@@ -156,5 +156,8 @@ alias activate="source ./venv/bin/activate"
 alias cld="claude"
 alias upcld="claude update"
 
+# Codex
+alias upcodex="sh -c 'curl -fsSL https://chatgpt.com/codex/install.sh | CODEX_NON_INTERACTIVE=1 sh'"
+
 # Shortcuts
 alias copyssh="pbcopy < $HOME/.ssh/id_ed25519.pub"
