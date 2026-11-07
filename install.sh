@@ -299,6 +299,7 @@ skills add https://github.com/vercel-labs/agent-skills --skill vercel-react-best
 skills add https://github.com/mattpocock/skills --skill grill-me grill-with-docs handoff -g --agent claude-code codex -y
 skills add https://github.com/shadcn/ui --skill shadcn -g --agent claude-code codex -y
 skills add agentmail-to/agentmail-claude-skill -g --agent claude-code codex -y
+skills add https://github.com/cloudflare/security-audit-skill --skill security-audit -g --agent claude-code codex -y
 echo "Agent skills installed ✅"
 
 ############################
@@ -310,10 +311,12 @@ echo "Agent skills installed ✅"
 PLUGIN_REPOS=(
     "DietrichGebert/ponytail"
     "stbenjam/skillsaw"
+    "ayghri/i-have-adhd"
 )
 PLUGIN_INSTALLS=(
     "ponytail@ponytail"
     "skillsaw@skillsaw-marketplace"
+    "i-have-adhd@i-have-adhd"
 )
 
 echo "Installing agent plugins 🔌"
