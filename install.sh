@@ -300,6 +300,7 @@ skills add https://github.com/mattpocock/skills --skill grill-me grill-with-docs
 skills add https://github.com/shadcn/ui --skill shadcn -g --agent claude-code codex -y
 skills add agentmail-to/agentmail-claude-skill -g --agent claude-code codex -y
 skills add https://github.com/cloudflare/security-audit-skill --skill security-audit -g --agent claude-code codex -y
+skills add https://github.com/Leonxlnx/taste-skill --skill design-taste-frontend -g --agent claude-code codex -y
 echo "Agent skills installed ✅"
 
 ############################
@@ -355,6 +356,20 @@ for i in "${!PLUGIN_REPOS[@]}"; do
         codex plugin add "$install_spec"
     fi
 done
+
+# Claude Code only: Codex plugin (delegate tasks and reviews to Codex)
+if claude plugin marketplace list 2>/dev/null | grep -q "openai-codex"; then
+    echo "'openai-codex' marketplace already added to Claude Code, skipping 🦘"
+else
+    echo "Adding 'openai-codex' marketplace to Claude Code 🦞"
+    claude plugin marketplace add openai/codex-plugin-cc
+fi
+if claude plugin list 2>/dev/null | grep -q "codex@openai-codex"; then
+    echo "'codex' already installed in Claude Code, skipping 🦘"
+else
+    echo "Installing 'codex@openai-codex' for Claude Code 🦞"
+    claude plugin install codex@openai-codex
+fi
 echo "Agent plugins installed ✅"
 
 ############################
